@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git快捷键..."
+
+echo "    git st => git status"
+git config --global alias.st status
+
+echo "    git co => git checkout"
+git config --global alias.co checkout
+
+echo "    git br => git branch"
+git config --global alias.br branch
+
+echo "    git mg => git merge"
+git config --global alias.mg merge
+
+echo "    git ci => git commit"
+git config --global alias.ci commit
+
+echo "    git dt => git difftool"
+git config --global alias.dt difftool
+
+echo "    git mt => git mergetool"
+git config --global alias.mt mergetool
+
+echo "    git last => git log -1 HEAD"
+git config --global alias.last "log -1 HEAD"
+
+echo "    git hist => git log --pretty=format:'%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad' --topo-order --graph --date=short"
+git config --global alias.hist "log --pretty=format:'%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad' --topo-order --graph --date=short"
+
+echo "    git ls => git log --pretty=format:'%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]' --decorate --date=short"
+git config --global alias.ls "log --pretty=format:'%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]' --decorate --date=short"
+

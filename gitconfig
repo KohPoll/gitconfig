@@ -1,0 +1,108 @@
+#!/bin/bash
+
+# os
+__IS_WIN__=1
+if [ -d /home ]; then
+    __IS_WIN__=0
+fi
+
+# config name
+function config_name() {
+
+  name=$(git config --list | grep user.name | sed s/user.name=//)
+  if [ "${name}x" = "x" ]; then
+    read -p "请输入Git用户名:" name
+    if [ "${name}" == "" ]; then
+        echo "取消设置..."
+    else
+        git config --global user.name ${name}
+        echo "完成！"
+    fi
+  else
+    read -n1 -p "Git用户名已经存在: \"${name}\"，是否需要修改[Y/N]？" answer
+    echo ""
+    case ${answer} in
+    Y|y)
+      read -p "请输入Git用户名:" name
+      if [ "${name}" == "" ]; then
+        echo "取消设置..."
+      else
+        git config --global user.name ${name}
+        echo "完成！"
+      fi
+      ;;
+    *)
+      echo "取消设置..."
+    esac
+  fi
+
+}
+
+# config email
+function config_email() {
+
+  email=$(git config --list | grep user.email | sed s/user.email=//)
+  if [ "${email}x" = "x" ]; then
+    read -p "请输入Git用户邮箱:" email
+    if [ "${email}" == "" ]; then
+      echo "取消设置..."
+    else
+      git config --global user.email ${email}
+      echo "完成！"
+    fi
+  else
+    read -n1 -p "Git用户邮箱已经存在: \"${email}\"，是否需要修改[Y/N]？" answer
+    echo ""
+    case ${answer} in
+    Y|y)
+      read -p "请输入Git用户邮箱:" email
+      if [ "${email}" == "" ]; then
+        echo "取消设置..."
+      else
+        git config --global user.email ${email}
+        echo "完成！"
+      fi
+      ;;
+    *)
+        echo "取消设置..."
+    esac
+  fi
+
+}
+
+# config git
+function config_git() {
+
+  . ${__BASE_PATH__}/util/drun ${__BASE_PATH__}/config.d
+
+  # Windows下把配置文件编码转换成UTF-8
+  if [ ${__IS_WIN__} = 1 ] && [ -f "${HOME}/.gitconfig" ]; then
+    ${__BASE_PATH__}/bin/iconv.exe -f utf-8 -t gbk "${HOME}/.gitconfig" > "${HOME}/gitconfigtpl"
+    rm -f "${HOME}/.gitconfig"
+    mv "${HOME}/gitconfigtpl" "${HOME}/.gitconfig"
+  fi
+
+}
+
+# base path
+__BASE_PATH__=$(cd `dirname $0`; pwd)
+
+# action
+action="${1}"
+
+if [ "${action}" = "" ]; then
+  git config --list
+  exit 0
+fi
+
+if [ "${action}" = "init" ]; then
+  config_name
+  config_email
+  config_git
+  exit 1
+fi
+
+if [ "${action}" = "update" ]; then
+  git pull origin master
+  config_git
+fi

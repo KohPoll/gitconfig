@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git颜色高亮..."
+
+echo "    core.ui=auto"
+git config --global color.ui auto
+
+echo "    core.branch=auto"
+git config --global color.branch auto
+
+echo "    core.status=auto"
+git config --global color.status auto
+
+echo "    core.diff=auto"
+git config --global color.diff auto

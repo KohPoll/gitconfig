@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git提交日志模板..."
+
+echo "    commit.template=${HOME}/.gitmessage"
+
+cp -f "${__BASE_PATH__}/res/gitmessage" "${HOME}/.gitmessage"
+git config --global commit.template "${HOME}/.gitmessage"

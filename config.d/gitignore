@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git全局忽略文件..."
+
+echo "    core.excludesfile=${HOME}/.gitignore"
+
+cp -f "${__BASE_PATH__}/res/gitignore" "${HOME}/.gitignore"
+git config --global core.excludesfile "${HOME}/.gitignore"
+

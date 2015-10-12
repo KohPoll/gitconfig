@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git日志编辑器..."
+
+if [ ${__IS_WIN__} = 1 ]; then
+  echo "    core.editor=notepad2"
+  git config --global core.editor notepad2
+else
+  echo "    core.editor=vim"
+  git config --global core.editor vim
+fi

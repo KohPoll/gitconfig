@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git大小写忽略..."
+
+echo "    core.ignorecase=true"
+git config --global core.ignorecase true

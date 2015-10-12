@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ ${__IS_WIN__} = 1 ]; then
+  echo -e "export LESSCHARSET=utf-8 \nalias ls='ls --show-control-chars --color=auto'" > "${HOME}/.profile"
+  # 支持中文输入
+  echo -e "set output-meta on \nset convert-meta off" > "${HOME}/.inputrc"
+
+  echo -e "\033[0;34m[INFO]\033[0m 开始设置Git Diff Tool..."
+  git config --global diff.external git-diff-wrapper.sh
+  git config --global diff.tool tortoise
+  git config --global difftool.tortoise.cmd 'TortoiseMerge -base:"$LOCAL" -theirs:"$REMOTE"'
+  git config --global difftool.prompt false
+
+  echo -e "\033[0;34m[INFO]\033[0m 开始设置Git Merge Tool..."
+  git config --global merge.tool tortoise
+  git config --global mergetool.tortoise.cmd 'TortoiseMerge -base:"$BASE" -theirs:"$REMOTE" -mine:"$LOCAL" -merged:"$MERGED"'
+  git config --global mergetool.prompt false
+
+  to=$(dirname ${__BASE_PATH__})
+  cp ${__BASE_PATH__}/bin/* ${to}/
+fi
+

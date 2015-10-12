@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo -e "\033[0;34m[INFO]\033[0m 开始设置Git换行符转换..."
+
+# 允许提交混合换行符（因为下面会转换）
+echo "    core.safecrlf=false"
+git config --global core.safecrlf false
+
+if [ ${__IS_WIN__} = 1 ]; then
+  # Win32下，提交时转换为LF，检出时转换为CRLF
+  echo "    core.autocrlf=true"
+  git config --global core.autocrlf true
+else
+  # Linux下，提交时转换成LF，检出时不转换
+  echo "    core.autocrlf=input"
+  git config --global core.autocrlf input
+fi
