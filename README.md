@@ -4,13 +4,13 @@
 
 ## 解决的问题
 
-  - 设置全局忽略文件.gitignore，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/res/gitignore
-  - 设置颜色高亮，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/color
-  - 设置讨厌的跨系统换行符，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/crlf
-  - 设置写提交日志时的默认编辑器（linux下是vim，windows下是notepad2），见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/editor
-  - 设置讨厌的跨平台编码，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/encode
-  - 对windows进行更加友好的设置（支持中文输入、diff和merge使用图形工具tortoise，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/win32
-  - 设置各种舒服的命令缩写，见：http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig/blob/master/config.d/alias
+  - 设置全局忽略文件.gitignore，见：<https://github.com/KohPoll/gitconfig/blob/master/res/gitignore>
+  - 设置颜色高亮，见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/color>
+  - 设置讨厌的跨系统换行符，见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/crlf>
+  - 设置写提交日志时的默认编辑器（linux下是vim，windows下是notepad2），见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/editor>
+  - 设置讨厌的跨平台编码，见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/encode>
+  - 对windows进行更加友好的设置（支持中文输入、diff和merge使用图形工具tortoise，见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/win32>
+  - 设置各种舒服的命令缩写，见：<https://github.com/KohPoll/gitconfig/blob/master/config.d/alias>
 
 ## 安装方法
 
@@ -27,7 +27,7 @@
   - linux, mac
 ```
 cd ~
-git clone http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig.git
+git clone https://github.com/KohPoll/gitconfig
 cd gitconfig
 ./gitconfig init
 ```
@@ -35,7 +35,7 @@ cd gitconfig
 ```
 注意：确保[git安装目录/cmd]目录已经加到path下
 cd [git安装目录/cmd]
-git clone http://gitlab.alibaba-inc.com/qiyao.kxp/gitconfig.git
+git clone https://github.com/KohPoll/gitconfig
 cd gitconfig
 bash gitconfig init 
 ```
